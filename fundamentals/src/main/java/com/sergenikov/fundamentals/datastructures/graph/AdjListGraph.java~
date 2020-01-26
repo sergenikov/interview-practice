@@ -1,0 +1,40 @@
+package com.sergenikov.fundamentals.datastructures.graph;
+
+import java.util.Map;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.HashMap;
+
+public class AdjListGraph implements Graph {
+
+    private Map<Node, List<Node>> adjList;
+
+    public AdjListGraph() {
+	this.adjList = new HashMap<>();
+    }
+
+    @Override
+    public void addEdge(Node n1, Node n2) {
+	// todo
+    }
+
+    /**
+     * Assume no duplicates in the Graph
+     **/
+    @Override
+    public void addVertex(Node n) {
+	if (!this.adjList.containsKey(n)) {
+	    this.adjList.put(n, new LinkedList<>());
+	}
+    }
+
+    @Override
+    public void removeEdge(Node n1, Node n2) {
+	// todo
+    }
+
+    @Override
+    public void removeVertex(Node n) {
+	// todo
+    }
+}

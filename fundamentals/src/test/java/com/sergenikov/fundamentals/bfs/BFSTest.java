@@ -1,14 +1,14 @@
 package com.sergenikov.fundamentals.bfs;
 
-import com.sergenikov.fundamentals.datastructures.Node;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import com.sergenikov.fundamentals.datastructures.graph.AdjListGraph;
+import com.sergenikov.fundamentals.datastructures.graph.Node;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class BFSTest {
 
@@ -16,18 +16,85 @@ public class BFSTest {
 
     @Before
     public void setup() {
-        fixture = new BFS();
+        this.fixture = new BFS();
     }
 
     @Test
-    public void search_should_returnNode_when_nodeExists() {
+    public void search_should_findNode_inUndirectedGraph() {
+        AdjListGraph graph = new AdjListGraph();
 
-        Node node = new Node(5, new Node(7, null));
+        graph.addVertex(100);
+        graph.addVertex(200);
+        graph.addVertex(300);
+        graph.addVertex(400);
 
-        List<Integer> actual = this.fixture.search(node, 7);
+        graph.addEdge(100, 200);
+        graph.addEdge(100, 300);
+        graph.addEdge(200, 400);
+        graph.addEdge(200, 100);
+        graph.addEdge(300, 100);
+        graph.addEdge(400, 200);
 
-        assertEquals(Arrays.asList(5, 7), actual);
+        Node actualNode = this.fixture.search(graph, 100, 400);
 
+        assertNotNull(actualNode);
+        assertEquals(new Node(400), actualNode);
     }
 
+    @Test
+    public void search_should_findNode_inDirectedAcyclicGraph() {
+        AdjListGraph graph = new AdjListGraph();
+
+        graph.addVertex(100);
+        graph.addVertex(200);
+        graph.addVertex(300);
+        graph.addVertex(400);
+
+        graph.addEdge(100, 200);
+        graph.addEdge(100, 300);
+        graph.addEdge(200, 400);
+
+        Node actualNode = this.fixture.search(graph, 100, 400);
+
+        assertNotNull(actualNode);
+        assertEquals(new Node(400), actualNode);
+    }
+
+    @Test
+    public void search_should_findNode_inDirectedCylicGraph() {
+        AdjListGraph graph = new AdjListGraph();
+
+        graph.addVertex(100);
+        graph.addVertex(200);
+        graph.addVertex(300);
+        graph.addVertex(400);
+
+        graph.addEdge(100, 200);
+        graph.addEdge(100, 300);
+        graph.addEdge(200, 400);
+        graph.addEdge(300, 200);
+
+        Node actualNode = this.fixture.search(graph, 100, 400);
+
+        assertNotNull(actualNode);
+        assertEquals(new Node(400), actualNode);
+    }
+
+    @Test
+    public void search_should_returnNull_when_nodeDoesntExist() {
+        AdjListGraph graph = new AdjListGraph();
+
+        graph.addVertex(100);
+        graph.addVertex(200);
+        graph.addVertex(300);
+
+        graph.addEdge(100, 200);
+        graph.addEdge(100, 300);
+        graph.addEdge(200, 100);
+        graph.addEdge(300, 100);
+
+        Node actualNode = this.fixture.search(graph, 100, 400);
+
+        assertNull(actualNode);
+    }
 }
