@@ -3,6 +3,7 @@ package com.sergenikov.fundamentals.dfs;
 
 import com.sergenikov.fundamentals.datastructures.graph.AdjListGraph;
 import com.sergenikov.fundamentals.datastructures.graph.Node;
+import com.sergenikov.fundamentals.datastructures.graph.Graph;
 
 import java.util.*;
 
@@ -10,15 +11,15 @@ public class DFS {
 
     Set<Node> visitedTracker;
 
-    public Node recursive(AdjListGraph graph, int start, int target) {
+    public Node recursive(Graph graph, int start, int target) {
 	this.visitedTracker = new HashSet<>();
-	return this.recursive(graph, start, target);
+	return this.recursiveWorker(graph, start, target);
     }
 
     /*
      * @return - found node or null
      */
-    private Node recursiveWorker(AdjListGraph graph, int start, int target) {
+    private Node recursiveWorker(Graph graph, int start, int target) {
 	
 	System.out.print(" " + start);
 	
@@ -30,17 +31,17 @@ public class DFS {
 
 	this.visitedTracker.add(startNode);
 
-	for (Node n : graph.getAdjList().get(startNode)) {
+	for (Node n : graph.getAdjacentNodes(startNode.getValue())) {
 	    
-	    if (!this.visited.contains(n)){
-		return this.recursive(graph, n.getValue(), target);		
+	    if (!this.visitedTracker.contains(n)) {
+		return this.recursiveWorker(graph, n.getValue(), target);		
 	    }
 
 	}
 	return null;
     }
 
-    public Node iterative(AdjListGraph graph, int start, int target) {
+    public Node iterative(Graph graph, int start, int target) {
 	
 	this.visitedTracker = new HashSet<>();
 
@@ -51,23 +52,21 @@ public class DFS {
 	this.visitedTracker.add(startNode);
 	stack.push(startNode);
 
-	while(!stack.isEmpty()){
+	while(!stack.isEmpty()) {
 	    
-	    Node current = stack.poll();
+	    Node current = stack.pop();
 
 	    if (current.getValue() == target) {
 		return current;
 	    }
 
-	    for (Node n : graph.getAdjacentNodes(current)) {
+	    for (Node n : graph.getAdjacentNodes(current.getValue())) {
 		if (!this.visitedTracker.contains(n)) {
 		    this.visitedTracker.add(n);
 		    stack.push(n);
 		}
 	    }
-
 	}
-
+	return null;
     }
-
 }

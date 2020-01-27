@@ -11,6 +11,8 @@ import com.sergenikov.fundamentals.datastructures.graph.AdjListGraph;
 import com.sergenikov.fundamentals.datastructures.graph.Node;
 import com.sergenikov.fundamentals.datastructures.graph.Graph;
 
+import com.sergenikov.fundamentals.dfs.DFS;
+
 public class DFSTest {
 
     private DFS fixture;
@@ -41,8 +43,9 @@ public class DFSTest {
 
 	assertEquals(actualRecursive, actualIterative);
 	
-        assertNotNull(actualNode);
-        assertEquals(new Node(400), actualNode);
+        assertNotNull(actualRecursive);
+	assertNotNull(actualIterative);
+        assertEquals(new Node(400), actualRecursive);
     }
 
     @Test
@@ -63,8 +66,9 @@ public class DFSTest {
 
 	assertEquals(actualRecursive, actualIterative);
 
-        assertNotNull(actualNode);
-        assertEquals(new Node(400), actualNode);
+        assertNotNull(actualRecursive);
+	assertNotNull(actualIterative);
+	assertEquals(new Node(400), actualRecursive);
     }
 
     @Test
@@ -86,8 +90,9 @@ public class DFSTest {
 
 	assertEquals(actualRecursive, actualIterative);
 
-        assertNotNull(actualNode);
-        assertEquals(new Node(400), actualNode);
+	assertNotNull(actualRecursive);
+	assertNotNull(actualIterative);
+        assertEquals(new Node(400), actualRecursive);
     }
 
     @Test
@@ -106,8 +111,7 @@ public class DFSTest {
 	Node actualRecursive = this.fixture.recursive(graph, 100, 400);
         Node actualIterative = this.fixture.iterative(graph, 100, 400);
 
-	assertEquals(actualRecursive, actualIterative);
-
-        assertNull(actualNode);
+	assertNull(actualRecursive);
+	assertNull(actualIterative);
     } 
 }

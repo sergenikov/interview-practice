@@ -1,6 +1,7 @@
 package com.sergenikov.fundamentals.datastructures.graph;
 
 import com.sergenikov.fundamentals.datastructures.graph.Node;
+import java.util.List;
 
 public interface Graph {    
 
