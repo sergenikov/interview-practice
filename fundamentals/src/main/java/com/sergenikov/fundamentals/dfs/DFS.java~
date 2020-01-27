@@ -1,0 +1,16 @@
+package com.sergenikov.fundamentals.dfs;
+
+import com.sergenikov.fundamentals.datastructures.graph.AdjListGraph;
+import com.sergenikov.fundamentals.datastructures.graph.Node;
+
+public class DFS {
+
+    public Node searchRecursive(AdjListGraph graph, int start, int target) {
+	
+	Node startNode = new Node(start);
+
+	
+	
+    }
+
+}

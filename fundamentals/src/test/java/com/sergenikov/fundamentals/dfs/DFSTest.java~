@@ -1,0 +1,9 @@
+public class DFSTest {
+
+    private DFS fixture;
+
+    public void setup() {
+	this.fixture = new DFS();
+    }
+
+}

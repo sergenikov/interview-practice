@@ -75,4 +75,8 @@ public class AdjListGraph implements Graph {
 		return this.adjList;
 	}
 
+    @Override
+    public List<Node> getAdjacentNodes(int n) {
+	return this.adjList.get(new Node());
+    }
 }
