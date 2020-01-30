@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Node<K> {
 
-    private Node<K> next;
-    private K value;
+    public Node<K> next;
+    public K value;
 
     public Node(K value, Node<K> next) {
         this.value = value;

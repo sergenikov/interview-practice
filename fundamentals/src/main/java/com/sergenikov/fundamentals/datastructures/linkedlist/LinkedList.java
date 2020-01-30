@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class LinkedList<K> {
 
-    private Node<K> head;
-    private Node<K> tail;
+    public Node<K> head;
+    public Node<K> tail;
 
     public LinkedList() {
 	this.head = null;

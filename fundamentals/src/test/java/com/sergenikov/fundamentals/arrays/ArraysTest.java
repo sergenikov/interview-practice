@@ -38,4 +38,43 @@ public class ArraysTest {
 		     );
 	
     }
+
+    @Test
+    public void mergeSort_should_sort_whenAlways() {
+
+	int[] input = new int[] {15, 12, 1, 11, 52};
+
+	this.fixture.mergeSort(input);
+	
+	Assert.assertArrayEquals(
+				 new int[] {1, 11, 12, 15, 52},
+				 input
+				 );	
+    }
+
+    @Test
+    public void mergeSort_should_returnTheSameArray_when_allElementsAreSame() {
+
+	int[] input = new int[] {1,1,1,1,1};
+
+	this.fixture.mergeSort(input);
+	
+	Assert.assertArrayEquals(
+				 new int[] {1,1,1,1,1},
+				 input
+				 );	
+    }
+
+    @Test
+    public void mergeSort_should_returnTheSameArray_when_alreadyInOrder() {
+
+	int[] input = new int[] {1,2,3,4,5};
+
+	this.fixture.mergeSort(input);
+	
+	Assert.assertArrayEquals(
+				 new int[] {1,2,3,4,5},
+				 input
+				 );	
+    }
 }

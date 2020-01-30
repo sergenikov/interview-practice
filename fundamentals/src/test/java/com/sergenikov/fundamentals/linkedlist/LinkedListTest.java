@@ -8,34 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
-public class ArraysTest {
+public class LinkedListTest {
 
-    private LinkedList<String> fixture;
-    
-    @Before
-    public void setup() {
-        this.fixture = new LinkedList<>(null);
-    }
 
-    @Test
-    public void simpleReverse_should_reverse_whenEvenArray() {
-	int[] input = new int[] {1, 2, 3, 4};
-	this.fixture.simpleReverse(input);
-	Assert.assertArrayEquals(
-		     new int[] {4, 3, 2, 1},
-		     input
-		     );
-	
-    }
-
-    @Test
-    public void simpleReverse_should_reverse_whenOddArray() {
-	int[] input = new int[] {1, 2, 3, 4, 5};
-	this.fixture.simpleReverse(input);
-	Assert.assertArrayEquals(
-		     new int[] {5, 4, 3, 2, 1},
-		     input
-		     );
-	
-    }
 }
